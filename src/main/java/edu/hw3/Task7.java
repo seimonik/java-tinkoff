@@ -3,7 +3,8 @@ package edu.hw3;
 import java.util.Comparator;
 
 public class Task7<T> implements Comparator<T> {
-
+    private Task7() {
+    }
     @Override
     public int compare(T o1, T o2) {
         if (o1 == o2) {
