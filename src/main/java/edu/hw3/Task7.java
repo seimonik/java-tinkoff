@@ -2,23 +2,17 @@ package edu.hw3;
 
 import java.util.Comparator;
 
-public class Task7<T> implements Comparator<T> {
-    public Task7() {
-    }
+public class Task7 implements Comparator<String> {
     @Override
-    public int compare(T o1, T o2) {
-        if (o1 == o2) {
+    public int compare(String o1, String o2) {
+        if (o1 == null && o2 == null) {
             return 0;
-        }
-
-        if (o1 == null) {
-            return 1;
-        }
-
-        if (o2 == null) {
+        } else if (o1 == null) {
             return -1;
+        } else if (o2 == null) {
+            return 1;
+        } else {
+            return o1.compareTo(o2);
         }
-
-        return ((Comparable<T>) o1).compareTo(o2);
     }
 }
