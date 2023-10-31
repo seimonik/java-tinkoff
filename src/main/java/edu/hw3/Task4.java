@@ -1,6 +1,10 @@
 package edu.hw3;
 
 public class Task4 {
+    private Task4() {
+
+    }
+
     static final int M = 1_000;
     static final int D = 500;
     static final int C = 100;

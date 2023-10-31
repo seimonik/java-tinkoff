@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class Task2 {
+    private Task2() {
+
+    }
+
     public static ArrayList<String> clusterize(String input) {
         ArrayList<String> result = new ArrayList<>();
         Stack<Character> buffer = new Stack<>();

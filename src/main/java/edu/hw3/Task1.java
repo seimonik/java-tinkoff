@@ -1,6 +1,10 @@
 package edu.hw3;
 
 public class Task1 {
+    private Task1() {
+
+    }
+
     public static String atbash(String line) {
         StringBuilder result = new StringBuilder();
 
