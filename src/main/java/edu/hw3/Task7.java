@@ -3,10 +3,6 @@ package edu.hw3;
 import java.util.Comparator;
 
 public class Task7 implements Comparator<String> {
-    private Task7(){
-
-    }
-
     @Override
     public int compare(String o1, String o2) {
         if (o1 == null && o2 == null) {
