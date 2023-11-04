@@ -26,17 +26,7 @@ public sealed interface Expr {
 
         @Override
         public double evaluate() {
-            double result = 1;
-
-            if (pow > 0) {
-                for (int i = 1; i <= pow; i++) {
-                    result *= number;
-                }
-            } else {
-                for (int i = 0; i > pow; i--) {
-                    result /= number;
-                }
-            }
+            double result = Math.pow(number, pow);
 
             return result;
         }
