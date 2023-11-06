@@ -42,9 +42,9 @@ public class Generator {
                 grid[removeWall.x()][removeWall.y()] = TypeCell.PASSAGE;
 
                 currentCell = neighbourCell;
-            } else if (!way.empty()) { // если нет соседей, возвращаемся на предыдущую точку
+            } else if (!way.empty()) {
                 currentCell = way.pop();
-            } else { // если нет соседей и точек в стеке, но не все точки посещены, выбираем случайную из непосещенных
+            } else {
                 unvisitedCells = getUnvisitedCells(grid);
                 if (unvisitedCells.size() == 0)
                     break;
@@ -53,7 +53,26 @@ public class Generator {
             }
         } while (unvisitedCells.size() > 0);
 
-        return new Maze(height, width, grid);
+        // стартовая точка
+        var startPoint = randomPoint(grid);
+        grid[startPoint.x()][startPoint.y()]=TypeCell.START;
+        // конечная точка
+        var endPoint = randomPoint(grid);
+        grid[endPoint.x()][endPoint.y()]=TypeCell.END;
+
+        return new Maze(height, width, grid, startPoint, endPoint);
+    }
+
+    private Cell randomPoint(TypeCell[][] grid){
+        int x = (int) (Math.random() * grid.length);
+        int y = (int) (Math.random() * grid[0].length);
+
+        while (grid[x][y] != TypeCell.PASSAGE){
+            x = (int) (Math.random() * grid.length);
+            y = (int) (Math.random() * grid[0].length);
+        }
+
+        return new Cell(x, y);
     }
 
     private ArrayList<Cell> getNeighbours(TypeCell[][] grid, Cell cell) {
