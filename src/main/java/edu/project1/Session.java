@@ -1,22 +1,20 @@
 package edu.project1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 class Session {
     private String answer;
-    private ArrayList<Character> userAnswer;
+    private ArrayList<Character> userAnswer = new ArrayList<>();
     private int maxAttempts = 7;
-    private int attempts = 0;
+    private int failedAttempts = 0;
 
-    Session() {
-        this.answer = Dictionary.randomWord();
+    Session(Dictionary dictionary) {
+        this.answer = dictionary.randomWord();
     }
 
-    GuessResult guess(char guess){
-        if (attempts >= maxAttempts)
+    GuessResult guess(char guess) {
+        if (failedAttempts >= maxAttempts - 1)
             return GuessResult.LOSS;
-        attempts++;
 
         if (checkString(answer, userAnswer))
             return GuessResult.WIN;
@@ -26,9 +24,13 @@ class Session {
 
         userAnswer.add(guess);
 
-        if (answer.contains(String.valueOf(guess)))
-            return GuessResult.RIGHT;
+        if (answer.contains(String.valueOf(guess))) {
+            if (checkString(answer, userAnswer))
+                return GuessResult.WIN;
 
+            return GuessResult.RIGHT;
+        }
+        failedAttempts++;
         return GuessResult.WRONG;
     }
 
@@ -39,5 +41,28 @@ class Session {
             }
         }
         return true;
+    }
+
+    public int getFailedAttempts(){
+        return failedAttempts;
+    }
+
+    public int getMaxAttempts(){
+        return maxAttempts;
+    }
+
+    public String maskWord() {
+        StringBuilder result = new StringBuilder();
+
+        for (char symbol :
+            answer.toCharArray()) {
+            if (userAnswer.contains(symbol)) {
+                result.append(symbol);
+            } else {
+                result.append('*');
+            }
+        }
+
+        return result.toString();
     }
 }
