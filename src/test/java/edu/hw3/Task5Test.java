@@ -2,13 +2,9 @@ package edu.hw3;
 
 import edu.hw3.Task5.Contact;
 import edu.hw3.Task5.Task5;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

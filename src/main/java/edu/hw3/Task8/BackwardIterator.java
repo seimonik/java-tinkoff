@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class BackwardIterator<T> implements Iterator<T> {
-    Stack<T> stack = new Stack<>();
+    final Stack<T> stack = new Stack<>();
 
     public BackwardIterator(Collection<T> collection) {
         for (T elem : collection) {
